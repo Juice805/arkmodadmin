@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<!-- metadata goes in head -->
+<meta charset="UTF-8">
+<title>ARK Mod List Generator</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="lib/ply.css">
+
+
+<script src="lib/clipboard.min.js"></script> 
+<script src="lib/Sortable.min.js"></script> 
+<script src="lib/jquery-3.2.1.min.js"></script>
+<script src="lib/Ply.min.js"></script>
+</head>
+
+<body>
+
+<h1>ARK Mod List Generator</h1>
+<p id="constuction">Under construction.</p>
+<p id="instrucions">Drag and drop to reorder mods. Uncheck box to disable</p>
+<h2>Mods</h2>
+<div id="mod_div" style="margin-top: -8px; margin-left: 10px" class="block__list block__list_words">
+  <ol id="mods" class="list">
+	  
+  </ol>
+  
+  <p><button id="addMod" type="button">Add Mod</button></p>
+  
+  <p><textarea id="display" wrap="off" rows="1" readonly placeholder="Add some Mods!"></textarea></p>
+  <div id="output">
+  	<button id="save" type="button">Save</button>
+  	<button id="clipIt" type="button">Copy to Clipboard</button>
+  </div>
+</div>
+
+
+</body>
+<script src="index.js"></script> 
+</html>

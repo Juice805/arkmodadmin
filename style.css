@@ -1,0 +1,138 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html {
+	background-color: whitesmoke;
+}
+
+.block {
+	opacity: 1;
+	position: absolute;
+}
+	.block__list {
+		background-color: transparent;
+		margin-top: -8px;
+		margin-left: 5px;
+	}
+
+		.block__list li { cursor: move; }
+
+	.block__list_words li {
+		background-color: #fff;
+		padding: 10px 0px 0px 0;
+	}
+		.block__list_words .sortable-ghost {
+			opacity: 0.4;
+			background-color: #F4E2C9;
+		}
+
+		.block__list_words li:first-letter {
+			text-transform: uppercase;
+		}
+
+	.block__list_tags {
+		padding-left: 30px;
+	}
+
+	.block__list_tags:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+		.block__list_tags li {
+			color: #fff;
+			float: left;
+			margin: 8px 20px 10px 0;
+			padding: 5px 10px;
+			min-width: 10px;
+			background-color: #5F9EDF;
+			text-align: center;
+		}
+			.block__list_tags li:first-child:first-letter {
+				text-transform: uppercase;
+			}
+
+#mods {
+	background-color:#F2AFB0;
+	min-width:300px;
+	display:inline-block;
+}
+	#mods li {
+		position: relative;
+	}
+
+	#mods strong {
+		-webkit-transition: opacity .2s;
+		transition: opacity .2s;
+		opacity: 0;
+		display: block;
+		cursor: pointer;
+		color: #c00;
+		top: 10px;
+		right: 10px;
+		position: absolute;
+		font-style: normal;
+	}
+
+	#mods strong:hover {
+		opacity: 1;
+	}
+
+li.modItem {
+	
+	line-height: 30px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.sortable-ghost {
+	opacity: .2;
+}
+
+
+a.modLink, a.modLink:visited, a.modLink:hover, a.modLink:active {
+	font-size:18px;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  	color: black;
+	font-style: normal;
+	padding-left: 6px;
+	text-decoration: none;
+}
+
+h1 {
+	
+	color:green;
+}
+
+#addMod {
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+}
+
+#save {
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+}
+
+#clipIt {
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+}
+
+#display {
+	border: none;
+	min-width: 400px;
+	max-width: 800px;
+	height: 20px;
+	resize: horizontal;
+	overflow-x: hidden;
+	text-align: center;
+}
+
+#output {
+	margin-bottom: 40px;
+}
