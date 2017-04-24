@@ -25,9 +25,33 @@
 	function createModElement(id, title, checked = true) {
 		var el = document.createElement('li');
 		el.className = 'modItem';
-		el.innerHTML = ' <label><input class="modCheck" type="checkbox" checked name="selectedMods" value="' + id + '"><a class="modLink" href="http://steamcommunity.com/sharedfiles/filedetails/?id=' + id + '" target="_blank">' + title + '</a></label>  <span class="remove"><strong class="js-remove">✖</strong></span>';
-		el.firstChild.checked = checked;
-		el.firstChild.onclick = updateDisplay;
+		
+		var curNode = document.createElement('label');
+		
+		
+		var newChild = document.createElement('input');
+		newChild.className = 'modCheck';
+		newChild.setAttribute('type', 'checkbox');
+		newChild.setAttribute('value', id);
+		newChild.setAttribute('data-title', title);
+		newChild.checked = checked;
+		newChild.onclick = updateDisplay;
+		curNode.appendChild(newChild);
+		
+		newChild = document.createElement('a');
+		newChild.className = 'modLink';
+		newChild.setAttribute('href', 'http://steamcommunity.com/sharedfiles/filedetails/?id=' + id);
+		newChild.setAttribute('target', '_blank')
+		newChild.innerText = title;
+		curNode.appendChild(newChild);
+		el.appendChild(curNode);
+		
+		var removeNode = document.createElement('strong');
+		removeNode.className = "js-remove";
+		removeNode.innerText = '✖';
+		el.appendChild(removeNode);
+
+		
 		return el;
 	}
 	
@@ -87,38 +111,64 @@
     // Sorry! No Web Storage support..
 	}
 }
+	function listEmpty(){
+		var modChecks = byClass('modCheck');
+		var modLinks = byClass('modLink');
+		
+		return modChecks.length > 0 && modChecks.length === modLinks.length;
+		
+	}
+	
+	function getListJSON() {
+		var modChecks = byClass('modCheck');
+		var modLinks = byClass('modLink');
+
+		var data = [];
+
+		for (var i = 0; i < modChecks.length; i++) {
+			data.push({"steamid": modChecks[i].value, "checked": modChecks[i].checked, "title": modLinks[i].innerHTML});
+		}
+		
+		return data
+	}
 
 		// onclick functions
 	byId('save').onclick = function(e) {
 		e.preventDefault();
-	
-		var modChecks = byClass('modCheck');
-		var modLinks = byClass('modLink');
-		
-		var data = [];
-		storeData('mods', data);
-	
-		if (modChecks.length > 0 && modChecks.length === modLinks.length) {
-		
-			for (var i = 0; i < modChecks.length; i++) {
-				data.push({"steamid": modChecks[i].value, "checked": modChecks[i].checked, "title": modLinks[i].innerHTML});
-			}
 			
-			storeData("mods", JSON.stringify(data));
-			console.log("Stored: " + JSON.stringify(data));
+		storeData('mods', JSON.stringify([]));
+	
+		if (listEmpty()) {
 		
-			/*
-			$.ajax({
-				url     : 'saveJSON.php',
-				method  : 'POST',
-				data    : JSON.stringify(data),
-				success : function( response ) {
-					console.log("Save request received successfully")
-				},
-				error   : function( response ) {
-					alert( "Error: " + JSON.stringify(response) + "\nSent: " +  JSON.stringify(data));
-				}
-			}); */
+			var json = getListJSON();
+			
+			storeData("mods", JSON.stringify(json));
+			console.log("Stored: " + JSON.stringify(json));
+		}
+	};
+	
+	byId('download').onclick = function(e) {
+		e.preventDefault();
+							
+		if (listEmpty()) {
+			
+			console.log("Attempting to download");
+			
+			var downloadEl = document.createElement('a');
+		
+			var json = getListJSON();
+			
+			downloadEl.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
+			downloadEl.setAttribute('download', 'ark-mods.txt');
+			downloadEl.style.display = 'none';
+			
+			document.body.appendChild(downloadEl);
+			
+			downloadEl.click();
+
+			document.body.removeChild(downloadEl);			
+		} else {
+			console.log("List empty. Not downloading...");
 		}
 	};
 

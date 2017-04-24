@@ -117,6 +117,12 @@ h1 {
 	font-size: 20px;
 }
 
+#download {
+	width: 200px;
+	height: 40px;
+	font-size: 20px;
+}
+
 #clipIt {
 	width: 200px;
 	height: 40px;
