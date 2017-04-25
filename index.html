@@ -14,7 +14,7 @@
 <script src="lib/Ply.min.js"></script>
 </head>
 
-<body>
+<body onkeydown="omniTitle(event)" onkeyup="omniTitle(event)">
 
 <h1>ARK Mod List Generator</h1>
 <p id="constuction">Under construction.</p>
@@ -32,11 +32,18 @@
   
   <p><textarea id="display" wrap="off" rows="1" readonly placeholder="Add some Mods!"></textarea></p>
   <div id="output">
-    <button id="download" type="button">Download</button>
-  	<button id="clipIt" type="button">Copy to Clipboard</button>
+   
+    <div class="tooltip">
+    	<button id="omnibutton" type="button">Copy to Clipboard</button>
+    	<span class="tooltiptext"><p>Shift-Click: Download exported list</p><p><span id="importKey">Ctrl</span>-Click: Import list from file</p></span>
+	</div>
+  	
+  	<button id="download" type="button" style="display: none"></button>
+  	<input id="upload" type="file" style="display: none" multiple="false">
+  	<button id="clipIt" type="button" style="display: none"></button>
+  	
   </div>
 </div>
-
 
 </body>
 <script src="index.js"></script> 
