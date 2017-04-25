@@ -3,42 +3,12 @@
 (function(window, document, undefined){
 	
 'use strict';
-	
-	var OSName="Unknown OS";
-	if (navigator.appVersion.indexOf("Win") !== -1) {OSName="Windows";}
-	if (navigator.appVersion.indexOf("Mac") !== -1) {OSName="MacOS";}
-	if (navigator.appVersion.indexOf("X11") !== -1) {OSName="UNIX";}
-	if (navigator.appVersion.indexOf("Linux") !== -1) {OSName="Linux";}
-	
-	switch(OSName){
-		case "MacOS":
-			byId('importKey').textContent = "Alt";
-			break;
-		case "Linux":
-		case "UNIX":
-		case "Windows":
-			byId('importKey').textContent = "Ctrl";
-			break;
-		default:
-			byId('importKey').textContent = "Alt";
-	}
 
 	function byId(id) { return document.getElementById(id); }
 	function byClass(id) { return document.getElementsByClassName(id); }
 
 		// Initialize List
 	var steamIDs = byId('mods');
-	
-	function omniTitle(event) {
-		var button = byId('omnibutton');
-		if (event.ctrlKey || event.altKey) {
-			button.title = "Upload List";
-		} else if (event.shiftKey) {
-			button.title = "Download List";
-		} else {
-			button.title = "Copy to Clipboard";
-		}
-	}
 
 	var modList = Sortable.create(steamIDs, {
 		animation: 150,
@@ -88,6 +58,12 @@
 	var dataLoaded = function() {
 		var data = localStorage.mods;
 		console.log(data);
+		
+		if (!data) {
+			console.log('No data to load');
+			return;
+		}
+		
 		try {
 			var mods = JSON.parse(data);
 		if (mods) {

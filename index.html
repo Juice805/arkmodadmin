@@ -12,6 +12,7 @@
 <script src="lib/Sortable.min.js"></script> 
 <script src="lib/jquery-3.2.1.min.js"></script>
 <script src="lib/Ply.min.js"></script>
+	
 </head>
 
 <body onkeydown="omniTitle(event)" onkeyup="omniTitle(event)">
@@ -38,12 +39,51 @@
 	</div>
   	
   	<button id="download" type="button" style="display: none"></button>
-  	<input id="upload" type="file" style="display: none" multiple="false">
+  	<input id="upload" type="file" style="display: none" multiple>
   	<button id="clipIt" type="button" style="display: none"></button>
   	
   </div>
 </div>
 
 </body>
-<script src="index.js"></script> 
+<script type="text/javascript">
+	var OSName="Unknown OS";
+	if (navigator.appVersion.indexOf("Win") !== -1) {OSName="Windows";}
+	if (navigator.appVersion.indexOf("Mac") !== -1) {OSName="MacOS";}
+	if (navigator.appVersion.indexOf("X11") !== -1) {OSName="UNIX";}
+	if (navigator.appVersion.indexOf("Linux") !== -1) {OSName="Linux";}
+		
+	switch(OSName){
+		case "MacOS":
+			document.getElementById('importKey').textContent = "Alt";
+			break;
+		case "Linux":
+		case "UNIX":
+		case "Windows":
+			document.getElementById('importKey').textContent = "Ctrl";
+			break;
+		default:
+			document.getElementById('importKey').textContent = "Alt";
+	}
+	
+	function omniTitle(event) {
+		var uploadKey = false;
+		
+		if (document.getElementById('importKey').textContent === "Alt") {
+			uploadKey = event.altKey;
+		} else {
+			uploadKey = event.ctrlKey;
+		}
+		
+		var button = document.getElementById('omnibutton');
+		if (uploadKey) {
+			button.textContent = "Upload List";
+		} else if (event.shiftKey) {
+			button.textContent = "Download List";
+		} else {
+			button.textContent = "Copy to Clipboard";
+		}
+	}
+</script>
+<script src="index.js"></script>
 </html>
