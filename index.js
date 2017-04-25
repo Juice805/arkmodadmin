@@ -60,8 +60,8 @@
 		console.log(data);
 		
 		if (!data) {
-			console.log('No data to load');
-			return;
+			console.log('No Data to Load');
+			return false;
 		}
 		
 		try {
@@ -79,6 +79,7 @@
 		}
 		} catch (e) {
 			console.log(e);
+			return false;
 		}
 	};
 
