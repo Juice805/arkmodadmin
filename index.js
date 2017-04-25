@@ -14,9 +14,9 @@
 		case "MacOS":
 			byId('importKey').textContent = "Alt";
 			break;
-		case "Windows":
 		case "Linux":
 		case "UNIX":
+		case "Windows":
 			byId('importKey').textContent = "Ctrl";
 			break;
 		default:
@@ -57,6 +57,7 @@
 		el.className = 'modItem';
 		
 		var curNode = document.createElement('label');
+		curNode.className = 'modItemLine';
 		
 		
 		var newChild = document.createElement('input');
@@ -80,7 +81,6 @@
 		removeNode.className = "js-remove";
 		removeNode.innerText = '✖';
 		el.appendChild(removeNode);
-
 		
 		return el;
 	}
@@ -182,17 +182,10 @@
 		
 		var uploadKey = false;
 		
-		switch(OSName){
-			case "MacOS":
-				uploadKey = e.altKey;
-				break;
-			case "Windows":
-			case "Linux":
-			case "UNIX":
-				uploadKey = e.ctrlKey;
-				break;
-			default:
-				uploadKey = e.altKey;
+		if (byId('importKey').textContent === "Alt") {
+			uploadKey = e.altKey;
+		} else {
+			uploadKey = e.ctrlKey;
 		}
 		
 		if (uploadKey) { //upload

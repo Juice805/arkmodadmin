@@ -4,125 +4,124 @@
 html {
 	background-color: whitesmoke;
 }
-
 .block {
 	opacity: 1;
 	position: absolute;
 }
-	.block__list {
-		background-color: transparent;
-		margin-top: -8px;
-		margin-left: 5px;
-	}
-
-		.block__list li { cursor: move; }
-
-	.block__list_words li {
-		background-color: #fff;
-		padding: 10px 0px 0px 0;
-	}
-		.block__list_words .sortable-ghost {
-			opacity: 0.4;
-			background-color: #F4E2C9;
-		}
-
-		.block__list_words li:first-letter {
-			text-transform: uppercase;
-		}
-
-	.block__list_tags {
-		padding-left: 30px;
-	}
-
-	.block__list_tags:after {
-		clear: both;
-		content: '';
-		display: block;
-	}
-		.block__list_tags li {
-			color: #fff;
-			float: left;
-			margin: 8px 20px 10px 0;
-			padding: 5px 10px;
-			min-width: 10px;
-			background-color: #5F9EDF;
-			text-align: center;
-		}
-			.block__list_tags li:first-child:first-letter {
-				text-transform: uppercase;
-			}
-
-#mods {
-	background-color:#F2AFB0;
-	min-width:300px;
-	display:inline-block;
+.block__list {
+	background-color: transparent;
+	margin-top: -8px;
+	margin-left: 5px;
 }
-	#mods li {
-		position: relative;
-	}
-
-	#mods strong {
-		-webkit-transition: opacity .2s;
-		transition: opacity .2s;
-		opacity: 0;
-		display: block;
-		cursor: pointer;
-		color: #c00;
-		top: 10px;
-		right: 10px;
-		position: absolute;
-		font-style: normal;
-	}
-
-	#mods strong:hover {
-		opacity: 1;
-	}
-
+.block__list li {
+	cursor: move;
+}
+.block__list_words li {
+	background-color: #fff;
+	padding: 7px 0px 7px 0;
+}
+.block__list_words .sortable-ghost {
+	opacity: 0.4;
+	background-color: #F4E2C9;
+}
+.block__list_words li:first-letter {
+	text-transform: uppercase;
+}
+.block__list_tags {
+	padding-left: 30px;
+}
+.block__list_tags:after {
+	clear: both;
+	content: '';
+	display: block;
+}
+.block__list_tags li {
+	color: #fff;
+	float: left;
+	margin: 8px 20px 10px 0;
+	padding: 5px 10px;
+	min-width: 10px;
+	background-color: #5F9EDF;
+	text-align: center;
+}
+.block__list_tags li:first-child:first-letter {
+	text-transform: uppercase;
+}
+#mods {
+	background-color: #F2AFB0;
+	min-width: 300px;
+	display: inline-block;
+}
+#mods li {
+	position: relative;
+}
+#mods strong {
+	-webkit-transition: opacity .2s;
+	transition: opacity .2s;
+	opacity: 0;
+	display: block;
+	cursor: pointer;
+	color: #c00;
+	top: 10px;
+	right: 20px;
+	position: absolute;
+	font-style: normal;
+	font-size: 24px;
+}
+#mods strong:hover {
+	opacity: 1;
+}
 li.modItem {
-	
 	line-height: 30px;
 	margin-right: 5px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	font-size: 20px;
 }
 
+li.modItem:before {
+	font-size: 20px;
+	background-color: red;
+}
+input.modCheck {
+	font-size: 36px;
+	cursor: crosshair;
+}
+label.modItemLine {
+	margin-left: 10px;
+	margin-right: 80px;
+	cursor: move;
+}
 .sortable-ghost {
 	opacity: .2;
 }
-
-
 a.modLink, a.modLink:visited, a.modLink:hover, a.modLink:active {
-	font-size:18px;
+	font-size: 18px;
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
-  	color: black;
+	color: black;
 	font-style: normal;
-	padding-left: 6px;
+	margin-left: 6px;
 	text-decoration: none;
 }
 
 h1 {
-	
-	color:green;
+	color: green;
 }
-
 #addMod {
 	width: 200px;
 	height: 40px;
 	font-size: 20px;
 }
-
 #save {
 	width: 200px;
 	height: 40px;
 	font-size: 20px;
 }
-
 #omnibutton {
 	width: 400px;
 	height: 40px;
 	font-size: 20px;
 }
-
 #display {
 	border: none;
 	min-width: 400px;
@@ -132,48 +131,41 @@ h1 {
 	overflow-x: hidden;
 	text-align: center;
 }
-
 #output {
 	margin-bottom: 40px;
 }
-
 /* Tooltip container */
 .tooltip {
-    position: relative;
-    display: inline-block;
+	position: relative;
+	display: inline-block;
 }
-
 /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
- 
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
+	visibility: hidden;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
 	width: 260px;
-    bottom: 110%;
-    left: 50%; 
-    margin-left: -130px; /* Use half of the width (120/2 = 60), to center the tooltip */
+	/* position - right*/
+	bottom: 0px;
+	left: 100%;
+	margin-left: 5px; /* Use half of the width (260/2 = 60), to center the tooltip */
 }
-
 .tooltip .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 100%; /* At the bottom of the tooltip */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
+	content: " ";
+	position: absolute;
+	right: 100%; /* At the left of the tooltip */
+	bottom: 15px;
+	margin-top: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent black transparent transparent;
 }
-
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
-    visibility: visible;
+	visibility: visible;
 }
