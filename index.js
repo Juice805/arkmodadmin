@@ -71,7 +71,7 @@
 		newChild = document.createElement('a');
 		newChild.className = 'modLink';
 		newChild.setAttribute('href', 'http://steamcommunity.com/sharedfiles/filedetails/?id=' + id);
-		newChild.setAttribute('target', '_blank')
+		newChild.setAttribute('target', '_blank');
 		newChild.innerText = title;
 		curNode.appendChild(newChild);
 		el.appendChild(curNode);
@@ -86,13 +86,13 @@
 	}
 	
 	var dataLoaded = function() {
-		var data = localStorage['mods'];
+		var data = localStorage.mods;
 		console.log(data);
 		try {
 			var mods = JSON.parse(data);
 		if (mods) {
 			for (var i = 0; i < mods.length; i++) {
-				var el = createModElement(mods[i]["steamid"], mods[i]["title"], mods[i]["checked"]);
+				var el = createModElement(mods[i].steamid, mods[i].title, mods[i].checked);
 				modList.el.appendChild(el);
 			}
 			updateDisplay();
@@ -122,12 +122,12 @@
 			}
 		}
 		return text.slice(0, -1);
-  	};
+  	}
 	
 	function updateDisplay() {
 		var display = byId('display');
 		display.innerHTML = pullIDs();
-	};
+	}
 	
 	
 	function storeData(key, value){
@@ -250,7 +250,7 @@
 					}
 					
 					for (var i = 0; i < obj.length; i++) {
-						var el = createModElement(obj[i]["steamid"], obj[i]["title"], obj[i]["checked"]);
+						var el = createModElement(obj[i].steamid, obj[i].title, obj[i].checked);
 						modList.el.appendChild(el);
 					}
 
