@@ -1,91 +1,91 @@
 <!doctype html>
 <html>
 <head>
-<!-- metadata goes in head -->
-<meta charset="UTF-8">
-<title>ARK Mod List Generator</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" type="text/css" href="lib/ply.css">
+	<!-- metadata goes in head -->
+	<meta charset="UTF-8">
+	<title>ARK Mod List Generator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="lib/ply.css">
 
 
-<script src="lib/clipboard.min.js"></script> 
-<script src="lib/Sortable.min.js"></script> 
-<script src="lib/jquery-3.2.1.min.js"></script>
-<script src="lib/Ply.min.js"></script>
+	<script src="lib/clipboard.min.js"></script> 
+	<script src="lib/Sortable.min.js"></script> 
+	<script src="lib/jquery-3.2.1.min.js"></script>
+	<script src="lib/Ply.min.js"></script>
 	
 </head>
 
 <body onkeydown="omniTitle(event)" onkeyup="omniTitle(event)">
+	<div id="content">
+		<h1>ARK Mod List Generator</h1>
+		<div id="modListContainer">
+			
+			<h2>Mods</h2>
+			<ol id="modList" class="list"></ol>
+		</div>
+		
+		<div id="controls">
+			<p>
+				<button id="addMod" type="button">Add Mod</button>
+				<button id="save" type="button">Save</button>
+			</p>
+		</div>
+		
+  		<div id="output">
+			<p><textarea id="display" wrap="off" rows="1" readonly placeholder="Add some Mods!"></textarea></p>
+		
+			<div class="tooltip">
+				<button id="omnibutton" type="button">Copy to Clipboard</button>
+				<span class="tooltiptext"><p>Shift-Click: Download exported list</p><p><span id="importKey">Ctrl</span>-Click: Import list from file</p></span>
+			</div>
+  	
+			<button id="download" type="button" style="display: none"></button>
+			<input id="upload" type="file" style="display: none">
+			<button id="clipIt" type="button" style="display: none"></button>
+  	
+		</div>
 
-<h1>ARK Mod List Generator</h1>
-<p id="instrucions">Drag and drop to reorder mods. Uncheck box to disable</p>
-<h2>Mods</h2>
-<div id="mod_div" class="block__list block__list_words">
-  <ol id="mods" class="list">
-	  
-  </ol>
-  
-  <p>
- 	  	<button id="addMod" type="button">Add Mod</button>
-  	  	<button id="save" type="button">Save</button>
-  </p>
-  
-  <p><textarea id="display" wrap="off" rows="1" readonly placeholder="Add some Mods!"></textarea></p>
-  <div id="output">
-   
-    <div class="tooltip">
-    	<button id="omnibutton" type="button">Copy to Clipboard</button>
-    	<span class="tooltiptext"><p>Shift-Click: Download exported list</p><p><span id="importKey">Ctrl</span>-Click: Import list from file</p></span>
+		<a href="https://github.com/Juice805/arkmodadmin"><img id="github" src="img/GitHub-Mark-64px.png"></a>
 	</div>
-  	
-  	<button id="download" type="button" style="display: none"></button>
-  	<input id="upload" type="file" style="display: none">
-  	<button id="clipIt" type="button" style="display: none"></button>
-  	
-  </div>
-</div>
-
-<a href="https://github.com/Juice805/arkmodadmin"><img id="github" src="img/GitHub-Mark-64px.png"></a>
-
 </body>
 <script type="text/javascript">
-	var OSName="Unknown OS";
-	if (navigator.appVersion.indexOf("Win") !== -1) {OSName="Windows";}
-	if (navigator.appVersion.indexOf("Mac") !== -1) {OSName="MacOS";}
-	if (navigator.appVersion.indexOf("X11") !== -1) {OSName="UNIX";}
-	if (navigator.appVersion.indexOf("Linux") !== -1) {OSName="Linux";}
+var OSName="Unknown OS";
+if (navigator.appVersion.indexOf("Win") !== -1) {OSName="Windows";}
+if (navigator.appVersion.indexOf("Mac") !== -1) {OSName="MacOS";}
+if (navigator.appVersion.indexOf("X11") !== -1) {OSName="UNIX";}
+if (navigator.appVersion.indexOf("Linux") !== -1) {OSName="Linux";}
 		
-	switch(OSName){
-		case "MacOS":
-			document.getElementById('importKey').textContent = "Alt";
-			break;
-		case "Linux":
-		case "UNIX":
-		case "Windows":
-			document.getElementById('importKey').textContent = "Ctrl";
-			break;
-		default:
-			document.getElementById('importKey').textContent = "Alt";
-	}
+switch(OSName){
+	case "MacOS":
+	document.getElementById('importKey').textContent = "Alt";
+	break;
+	case "Linux":
+	case "UNIX":
+	case "Windows":
+	document.getElementById('importKey').textContent = "Ctrl";
+	break;
+	default:
+	document.getElementById('importKey').textContent = "Alt";
+}
 	
-	function omniTitle(event) {
-		var uploadKey = false;
+function omniTitle(event) {
+	var uploadKey = false;
 		
-		if (document.getElementById('importKey').textContent === "Alt") {
-			uploadKey = event.altKey;
-		} else {
-			uploadKey = event.ctrlKey;
-		}
-		
-		var button = document.getElementById('omnibutton');
-		if (uploadKey) {
-			button.textContent = "Import List";
-		} else if (event.shiftKey) {
-			button.textContent = "Export List";
-		} else {
-			button.textContent = "Copy to Clipboard";
-		}
+	if (document.getElementById('importKey').textContent === "Alt") {
+		uploadKey = event.altKey;
+	} else {
+		uploadKey = event.ctrlKey;
 	}
+		
+	var button = document.getElementById('omnibutton');
+	if (uploadKey) {
+		button.textContent = "Import List";
+	} else if (event.shiftKey) {
+		button.textContent = "Export List";
+	} else {
+		button.textContent = "Copy to Clipboard";
+	}
+}
 </script>
 <script src="index.js"></script>
 </html>
