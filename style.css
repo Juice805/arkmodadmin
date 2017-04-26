@@ -8,7 +8,7 @@
 
 html {
 	background-image: url('img/Ark_Survival_Evolved.png');
-	background-color: whitesmoke;
+	background-color: linen;
 	background-repeat: no-repeat;
 	background-position: top 50% right 15%;
 	background-size: auto 85%;
@@ -151,6 +151,8 @@ a.modLink, a.modLink:visited, a.modLink:hover, a.modLink:active {
 	resize: horizontal;
 	overflow-x: hidden;
 	text-align: center;
+	border: 2px solid black;
+	border-radius: 5px;
 }
 #output {
 	margin-bottom: 40px;
