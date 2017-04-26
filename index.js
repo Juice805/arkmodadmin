@@ -103,7 +103,16 @@
 	
 	function updateDisplay() {
 		var display = byId('display');
-		display.innerHTML = pullIDs();
+		display.value = pullIDs();
+		if (byClass('modCheck').length === 0) {
+			var placeholder = document.createElement('p');
+			placeholder.textContent = 'Empty';
+			placeholder.id = 'empty';
+			steamIDs.appendChild(placeholder);
+		} else if (byId('empty')) {
+			var placeholder =  byId('empty');
+			placeholder.parentNode.removeChild(placeholder);
+		}
 	}
 	
 	
