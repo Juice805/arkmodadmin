@@ -49,14 +49,17 @@ h2 {
 
 #modList {
 	background-color: #F2AFB0;
+	font-family: ark, "Helvetica Neue", Helvetica, Arial, Gotham, "sans-serif";
 	padding-top: 1px;
 	padding-bottom: 1px;
 	padding-left: 50px;
 	margin-top: -8px;
 	min-width: 363px;
 	display: inline-block;
-	font-family: ark, "Helvetica Neue", Helvetica, Arial, Gotham, "sans-serif";
 	border-radius: 10px;
+	min-height: 40px;
+	color: rgba(0,0,0,10);
+	position: relative;
 }
 
 #modList li {
@@ -126,6 +129,13 @@ a.modLink:first-letter {
 
 .sortable-ghost {
 	opacity: .2;
+}
+
+#empty {
+	opacity: 0.8;
+	margin-left: 134px;
+	vertical-align: middle;
+	color: rgb(100, 100, 100);
 }
 
 #addMod {
