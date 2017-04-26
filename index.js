@@ -8,7 +8,7 @@
 	function byClass(id) { return document.getElementsByClassName(id); }
 
 		// Initialize List
-	var steamIDs = byId('mods');
+	var steamIDs = byId('modList');
 
 	var modList = Sortable.create(steamIDs, {
 		animation: 150,
