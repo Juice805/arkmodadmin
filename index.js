@@ -87,6 +87,7 @@
 		console.log("Data Loaded");
 	} else {
 		console.log("Data Not Loaded");
+		updateDisplay();
 	}
 
 	function pullIDs() {
