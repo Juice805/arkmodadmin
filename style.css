@@ -10,7 +10,7 @@ html {
 	background-image: url('img/Ark_Survival_Evolved.png');
 	background-color: whitesmoke;
 	background-repeat: no-repeat;
-	background-position: top right;
+	background-position: top 50% right 15%;
 	background-size: auto 85%;
 	background-attachment: fixed;
 }
