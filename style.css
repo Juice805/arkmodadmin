@@ -1,9 +1,32 @@
 @charset "UTF-8";
 /* CSS Document */
 
-html {
-	background-color: whitesmoke;
+@font-face {
+	font-family: ark;
+	src: url(https://survivetheark.com/ARK-Regular.ttf);
 }
+
+html {
+	background-image: url('img/Ark_Survival_Evolved.png');
+	background-color: whitesmoke;
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: auto 85%;
+	background-attachment: fixed;
+}
+
+body {
+	position: relative;
+	left: 15px;
+}
+
+h1 {
+	color: black;
+	font-size: 48px;
+	font-family: ark, "Helvetica Neue", Helvetica, Arial, Gotham, "sans-serif";
+	font-weight: 500;
+}
+
 .block {
 	opacity: 1;
 	position: absolute;
@@ -51,6 +74,7 @@ html {
 	background-color: #F2AFB0;
 	min-width: 300px;
 	display: inline-block;
+	font-family: ark, "Helvetica Neue", Helvetica, Arial, Gotham, "sans-serif";
 }
 #mods li {
 	position: relative;
@@ -104,9 +128,6 @@ a.modLink, a.modLink:visited, a.modLink:hover, a.modLink:active {
 	text-decoration: none;
 }
 
-h1 {
-	color: green;
-}
 #addMod {
 	width: 200px;
 	height: 40px;
@@ -168,4 +189,12 @@ h1 {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
 	visibility: visible;
+}
+
+#github {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	height: 32px;
+	width: 32px;
 }
