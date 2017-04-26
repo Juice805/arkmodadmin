@@ -68,7 +68,7 @@
 			var mods = JSON.parse(data);
 		if (mods) {
 			for (var i = 0; i < mods.length; i++) {
-				var el = createModElement(mods[i].steamid, mods[i].title, mods[i].checked);
+				var el = createModElement(mods[i].steamid.replace(/\s/g,''), mods[i].title, mods[i].checked);
 				modList.el.appendChild(el);
 			}
 			updateDisplay();
@@ -220,7 +220,7 @@
 					}
 					
 					for (var i = 0; i < obj.length; i++) {
-						var el = createModElement(obj[i].steamid, obj[i].title, obj[i].checked);
+						var el = createModElement(obj[i].steamid.replace(/\s/g,''), obj[i].title, obj[i].checked);
 						modList.el.appendChild(el);
 					}
 
@@ -242,7 +242,7 @@
 			title: 'Add',
 			form: { title: 'name',  id: 'steamID'}
 		}).done(function (ui) {
-			var el = createModElement(ui.data.id, ui.data.title);
+			var el = createModElement(ui.data.id.replace(/\s/g,''), ui.data.title);
 			modList.el.appendChild(el);
 			updateDisplay();
 		});
