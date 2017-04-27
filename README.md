@@ -1,4 +1,4 @@
-# Ark Mod Organizer
+# Ark Server Mod Organizer
 Quickly organize your ARK server’s mods!
 
 ## Features
