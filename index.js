@@ -8,9 +8,9 @@
 	function byClass(id) { return document.getElementsByClassName(id); }
 
 		// Initialize List
-	var steamIDs = byId('modList');
+	var modIDs = byId('modList');
 
-	var modList = Sortable.create(steamIDs, {
+	var modList = Sortable.create(modIDs, {
 		animation: 150,
 		filter: '.js-remove',
 		onFilter: function (evt) {
@@ -68,7 +68,7 @@
 			var mods = JSON.parse(data);
 		if (mods) {
 			for (var i = 0; i < mods.length; i++) {
-				var el = createModElement(mods[i].steamid.replace(/\s/g,''), mods[i].title, mods[i].checked);
+				var el = createModElement(mods[i].modid.replace(/\s/g,''), mods[i].title, mods[i].checked);
 				modList.el.appendChild(el);
 			}
 			updateDisplay();
@@ -109,7 +109,7 @@
 			var placeholder = document.createElement('p');
 			placeholder.textContent = 'Empty';
 			placeholder.id = 'empty';
-			steamIDs.appendChild(placeholder);
+			modIDs.appendChild(placeholder);
 		} else if (byId('empty')) {
 			var placeholder =  byId('empty');
 			placeholder.parentNode.removeChild(placeholder);
@@ -143,7 +143,7 @@
 		var data = [];
 
 		for (var i = 0; i < modChecks.length; i++) {
-			data.push({"steamid": modChecks[i].value, "checked": modChecks[i].checked, "title": modLinks[i].innerHTML});
+			data.push({"modid": modChecks[i].value, "checked": modChecks[i].checked, "title": modLinks[i].innerHTML});
 		}
 		
 		return data;
@@ -167,48 +167,48 @@
 	byId('omnibutton').onclick = function(e) {
 		e.preventDefault();
 		
-		var uploadKey = false;
+		var importKey = false;
 		
 		if (byId('importKey').textContent === "Alt") {
-			uploadKey = e.altKey;
+			importKey = e.altKey;
 		} else {
-			uploadKey = e.ctrlKey;
+			importKey = e.ctrlKey;
 		}
 		
-		if (uploadKey) { //upload
-			var uploadEl = byId('upload');
-			console.log("Attempting to upload");
+		if (importKey) { //import
+			var importEl = byId('import');
+			console.log("Attempting to import");
 			
-			uploadEl.click();
+			importEl.click();
 			
-		} else if (e.shiftKey) { //download
+		} else if (e.shiftKey) { //export
 					
 			if (listEmpty()) {
 			
-				console.log("Attempting to download");
+				console.log("Attempting to export");
 			
-				var downloadEl = document.createElement('a');
+				var exportEl = document.createElement('a');
 		
 				var json = getListJSON();
 			
-				downloadEl.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
-				downloadEl.setAttribute('download', 'ark-mods.txt');
-				downloadEl.style.display = 'none';
+				exportEl.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
+				exportEl.setAttribute('download', 'ark-mods.txt');
+				exportEl.style.display = 'none';
 			
-				document.body.appendChild(downloadEl);
+				document.body.appendChild(exportEl);
 			
-				downloadEl.click();
+				exportEl.click();
 
-				document.body.removeChild(downloadEl);			
+				document.body.removeChild(exportEl);			
 			} else {
-				console.log("List empty. Not downloading...");
+				console.log("List empty. Not exporting...");
 			}
 		} else { // copy to clipboard
 			byId('clipIt').click();
 		}
 	};
 	
-	byId('upload').onchange = function(e) {
+	byId('import').onchange = function(e) {
 		console.log('File selected');
 		var files = e.target.files;
 		if (files.length <= 0) {
@@ -230,7 +230,7 @@
 					}
 					
 					for (var i = 0; i < obj.length; i++) {
-						var el = createModElement(obj[i].steamid.replace(/\s/g,''), obj[i].title, obj[i].checked);
+						var el = createModElement(obj[i].modid.replace(/\s/g,''), obj[i].title, obj[i].checked);
 						modList.el.appendChild(el);
 					}
 
@@ -243,14 +243,14 @@
 			};
 			reader.readAsText(file);
 		}
-		this.value = ""; // reset value to allow for another change when next file is uploaded
+		this.value = ""; // reset value to allow for another change when next file is imported
 	};
 
 	// Setup Add button with prompt
 	byId('addMod').onclick = function () {
 		Ply.dialog('prompt', {
 			title: 'Add',
-			form: { title: 'name',  id: 'steamID'}
+			form: { title: 'name',  id: 'modID'}
 		}).done(function (ui) {
 			var el = createModElement(ui.data.id.replace(/\s/g,''), ui.data.title);
 			modList.el.appendChild(el);
